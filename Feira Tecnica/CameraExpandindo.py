@@ -4,9 +4,9 @@ from cvzone.HandTrackingModule import HandDetector
 import serial
 
 # Conexão com o Arduino
-'''while True:
+while True:
     try:
-        arduino = serial.Serial('COM3', 9600)
+        arduino = serial.Serial('COM4', 9600)
         print('Arduino conectado')
         break
     except:
@@ -14,7 +14,7 @@ import serial
 
 def dados(cmd):
     arduino.write((str(cmd) + '\n').encode())
-    arduino.flush()'''
+    arduino.flush()
 
 # Inicializar a webcam
 webcam = cv2.VideoCapture(0)
@@ -77,7 +77,7 @@ while True:
                         else:  # Mínimo
                             valor = '51' if estado == 'Levantado' else '50'
 
-                        #dados(valor)
+                        dados(valor)
 
                         cv2.putText(imagem_maos, f'{nome_dedo}: {estado} - {valor}', (10, 50 + 30 * i),
                                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 0, 0), 2)
